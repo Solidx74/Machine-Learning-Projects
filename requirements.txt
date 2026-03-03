@@ -8,4 +8,5 @@ catboost
 lightgbm
 ipykernel
 dill
+flask
 #-e .
