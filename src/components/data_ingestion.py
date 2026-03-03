@@ -12,6 +12,9 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformationConfig
 from src.components.data_transformation import DataTransformation
 
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
+
 # The @dataclass decorator is used to create a class that is used to store the configuration for the data ingestion. It has three attributes: train_data_path, test_data_path and raw_data_path. The default value for these attributes is the path where the train, test and raw data will be saved in the artifacts folder.
 @dataclass
 # The DataIngestionConfig class is used to store the configuration for the data ingestion. It has three attributes: train_data_path, test_data_path and raw_data_path. The default value for these attributes is the path where the train, test and raw data will be saved in the artifacts folder.
@@ -65,4 +68,7 @@ if __name__ == "__main__":
     train_data, test_data = obj.initiate_data_ingestion()
     
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data, test_data)
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data, test_data)
+
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_trainer(train_arr, test_arr))
