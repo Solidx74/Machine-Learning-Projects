@@ -9,4 +9,6 @@ lightgbm
 ipykernel
 dill
 flask
+gunicorn
+pandas
 #-e .
